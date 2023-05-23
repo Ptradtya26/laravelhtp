@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Pegawai extends Model
+{
+    use HasFactory;
+    protected $table = 'pegawai';//inipemanggilan nama table
+    protected $primarykey = 'id';//ini contoh pemanggilan id atau primary keynya
+    protected $fillable = ['nip','nama','jabatan_id','divisi_id','gender',
+    'tmp_lahir','tgl_lahir','alamat','foto'];//ini pemanggilan kolom pada table
+
+    public function divisi(){
+        return $this->belongsTo(Divisi::class);
+    }
+    public function jabatan(){
+        return $this->belongsTo(Jabatan::class);
+    }
+}
