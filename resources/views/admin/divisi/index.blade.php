@@ -52,16 +52,35 @@
                                             <td>
                                                 <form action="#" method="POST">
 
-                                                <a class="btn btn-info btn-sm" href="#">Detail</a>
+                                                <a class="btn btn-info btn-sm" href="{{url('admin/divisi/show/'.$d->id)}}">Detail</a>
 
 
                                                 <a class="btn btn-warning btn-sm" href="{{url('admin/divisi/edit/'.$d->id)}}">Ubah</a>
 
-                                                    <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus"
-                                                    onclick="return confirm('Anda yakin akan dihapus?')">Hapus</button>
 
-                                                    <input type="hidden" name="idx" value="">
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$d->id}}">
+                                                      hapus
+                                                    </button>
 
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal{{$d->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                      <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                          <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Data</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                          </div>
+                                                          <div class="modal-body">
+                                                            Apakah anda yakin akan menghapus data?
+                                                          </div>
+                                                          <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <a class="btn btn-danger" href="{{url('admin/divisi/delete/'.$d->id)}}">Hapus</a>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
 
                                                 </form>
                                             </td>
