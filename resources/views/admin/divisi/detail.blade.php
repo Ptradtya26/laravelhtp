@@ -1,23 +1,25 @@
 @extends('admin.layout.appadmin')
 @section('content')
 
-<h1>Details</h1>
+
+<h1> Details</h1>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 <div class="container">
 <div class="row">
 <div class="col-md-5">
 <div class="project-info-box mt-0">
-    @foreach ( $divisi as $d )
-
-
+    @foreach ($divisi as $d)
 <h5>PROJECT DETAILS</h5>
 <p class="mb-0">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est. Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.</p>
 </div>
-<input type="hidden" value="{{$d->id}}"/>
+<input type="hidden" value="{{$d->id}}" />
 <div class="project-info-box">
-<p><b>Nama:</b>{{$d->nama}}</p>
-<p><b>ID:</b>{{$d->id}}</p>
+<p><b>Nama:</b> {{$d->nama}}</p>
+<p><b>ID:</b> {{$d->id}}</p>
+<p><b>Designer:</b> James Doe</p>
+<p><b>Tools:</b> Illustrator</p>
+<p class="mb-0"><b>Budget:</b> $500</p>
 </div>
 <div class="project-info-box mt-0 mb-0">
 <p class="mb-0">
@@ -41,7 +43,9 @@
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript">
-
+	
 </script>
 @endforeach
+
+
 @endsection

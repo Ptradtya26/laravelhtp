@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\JabatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,37 +26,47 @@ Route::get ('/salam', function(){
     return "Selamat pagi";
 }); // ini adalah routing untuk pemanggilan dirinya sendiri
 Route::get('/ucapan', function(){
-    return view('ucapan'); //ini adalah routing yang mengarahkan ke view yang ada di folder
+    return view('ucapan'); //ini adalah routing yang mengarahkan ke view yang ada di folder 
     //resources/views
 });
 Route::get('/nilai', function(){
     return view('nilai');
-}); //arahkan return nilai ke file nilai yang ada di view
+}); //arahkan return nilai ke file nilai yang ada di view 
 Route::get('/daftar_nilai', function(){
     return view('daftar_nilai');
 });
 //mengarahkan routing ke controller
 Route::get('/siswa', [SiswaController::class, 'dataSiswa']);
 //mengarahkan ke controller dashboardController
-//prefix atau grouping
+//prefix atau group
 Route::prefix('admin')->group(function(){
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
 Route::get('/staff', [StaffController::class, 'index']);
-
 //ini adalah route untuk pegawai
 Route::get('/pegawai',[PegawaiController::class, 'index']);
-Route::get('/pegawai/create',[PegawaiController::class, 'create']);
+Route::get('/pegawai/create', [PegawaiController::class, 'create']);
 Route::post('/pegawai/store', [PegawaiController::class, 'store']);
-Route::get('/pegawai/edit/{id}',[PegawaiController::class, 'edit']);
+Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit']);
 Route::post('/pegawai/update', [PegawaiController::class, 'update']);
 Route::get('/pegawai/show/{id}', [PegawaiController::class, 'show']);
+Route::get('/pegawai/delete/{id}', [PegawaiController::class, 'destroy']);
+
+
 //ini adalah route untuk divisi
-Route::get('/divisi',[DivisiController::class, 'index']);
-Route::get('/divisi/create',[DivisiController::class, 'create']);
+Route::get('/divisi', [DivisiController::class, 'index']);
+Route::get('/divisi/create', [DivisiController::class, 'create']);
 Route::post('/divisi/store', [DivisiController::class, 'store']);
-Route::get('/divisi/edit/{id}',[DivisiController::class, 'edit']);
+Route::get('/divisi/edit/{id}', [DivisiController::class, 'edit']);
 Route::post('/divisi/update', [DivisiController::class, 'update']);
 Route::get('/divisi/show/{id}', [DivisiController::class, 'show']);
-Route::get('/divisi/delete/{id}',[DivisiController::class, 'destroy']);
+Route::get('/divisi/delete/{id}', [DivisiController::class, 'destroy']);
+
+
+//ini adalah routing untuk jabatan
+Route::get('/jabatan', [JabatanController::class, 'index']);
+
+//ini adalah routing untuk dashboard
+
+
 });
-//nantinya pegawai tersebut mengambil pelatihan  dan pada table pelatihan otomatis bertambah
+//nantinya pegawai tersebut mengambil pelatihan dan pada table pelatihan bertambah

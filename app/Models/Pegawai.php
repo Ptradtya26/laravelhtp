@@ -8,15 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Pegawai extends Model
 {
     use HasFactory;
-    protected $table = 'pegawai';//inipemanggilan nama table
-    protected $primarykey = 'id';//ini contoh pemanggilan id atau primary keynya
-    protected $fillable = ['nip','nama','jabatan_id','divisi_id','gender',
-    'tmp_lahir','tgl_lahir','alamat','foto'];//ini pemanggilan kolom pada table
+    protected $table = 'pegawai';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'nip','nama','jabatan_id', 'divisi_id','gender',
+        'tmp_lahir','tgl_lahir','kekayaan','alamat','foto'
 
+    ];
     public function divisi(){
         return $this->belongsTo(Divisi::class);
     }
     public function jabatan(){
         return $this->belongsTo(Jabatan::class);
     }
+
 }

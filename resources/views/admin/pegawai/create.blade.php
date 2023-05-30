@@ -3,7 +3,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<br><h1 align="center">Form Tambah Pegawai</h1><br>
+
+<h1 align="center">Form Tambah Pegawai</h1>
 <form method="POST" action="{{url('admin/pegawai/store')}}" enctype="multipart/form-data">
     {{csrf_field()}}
   <div class="form-group row">
@@ -62,6 +63,12 @@
     <label for="text3" class="col-4 col-form-label">Tanggal Lahir</label>
     <div class="col-8">
       <input id="text3" name="tgl_lahir" type="date" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="text2" class="col-4 col-form-label">Kekayaan</label>
+    <div class="col-8">
+      <input id="text2" name="kekayaan" type="text" class="form-control" placeholder="Masukan Harta Kekayaan">
     </div>
   </div>
   <div class="form-group row">

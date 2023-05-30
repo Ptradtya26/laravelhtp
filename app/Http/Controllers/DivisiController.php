@@ -32,7 +32,7 @@ class DivisiController extends Controller
      */
     public function store(Request $request)
     {
-        //fungsi untuk mengisi data pada form
+        //fungsi untuk mengisi data pada form 
         DB::table('divisi')->insert([
             'nama' => $request->nama,
         ]);
@@ -44,7 +44,7 @@ class DivisiController extends Controller
      */
     public function show($id)
     {
-        //
+        // 
         $divisi = DB::table('divisi')->where('id', $id)->get();
 
         return view ('admin.divisi.detail', compact('divisi'));
@@ -53,11 +53,12 @@ class DivisiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit( $id)
     {
-        //arahkan ke file edit yang ada di divisi view
-        $divisi = DB::table('divisi')->where('id',$id)->get();
-        return view('admin.divisi.edit', compact('divisi'));
+        //arahkan ke file edit yang ada di divisi view 
+        $divisi = DB::table('divisi')->where('id', $id)->get();
+
+        return view ('admin.divisi.edit', compact('divisi'));
     }
 
     /**
@@ -69,6 +70,7 @@ class DivisiController extends Controller
         DB::table('divisi')->where('id', $request->id)->update([
             'nama' => $request->nama,
         ]);
+        //ketika selesai mengupdate maka arahkan ke halaman admin divisi index
         return redirect('admin/divisi');
     }
 
@@ -80,5 +82,7 @@ class DivisiController extends Controller
         //
         DB::table('divisi')->where('id', $id)->delete();
         return redirect('admin/divisi');
+        
+
     }
 }

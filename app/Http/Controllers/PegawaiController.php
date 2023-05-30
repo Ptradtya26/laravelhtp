@@ -60,6 +60,7 @@ class PegawaiController extends Controller
             'gender' => $request->gender,
             'tmp_lahir' => $request->tmp_lahir,
             'tgl_lahir' => $request->tgl_lahir,
+            'kekayaan' => $request->kekayaan,
             'alamat' => $request->alamat,
             'foto' => $fileName,
         ]);
@@ -72,9 +73,9 @@ class PegawaiController extends Controller
     public function show($id)
     {
         //
-        $pegawai = Pegawai::join('divisi','pegawai.divisi_id','=', 'divisi.id')
+        $pegawai = Pegawai::join('divisi', 'pegawai.divisi_id', '=', 'divisi.id')
         ->join('jabatan','pegawai.jabatan_id', '=', 'jabatan.id')
-        ->select('pegawai.*','divisi.nama as divisi', 'jabatan.nama as jabatan')
+        ->select('pegawai.*', 'divisi.nama as divisi', 'jabatan.nama as jabatan')
         ->where('pegawai.id', $id)
         ->get();
         return view ('admin.pegawai.detail', compact('pegawai'));
@@ -89,8 +90,9 @@ class PegawaiController extends Controller
         //menggunakan query builder
         $divisi = DB::table('divisi')->get();
         $jabatan = DB::table('jabatan')->get();
-        $pegawai = DB::table('pegawai')-> where('id', $id)->get();
-        return view ('admin.pegawai.edit', compact('pegawai','divisi','jabatan'));
+        $pegawai = DB::table('pegawai')->where('id', $id)->get();
+
+        return view ('admin.pegawai.edit', compact('pegawai', 'divisi', 'jabatan'));
     }
 
     /**
@@ -114,6 +116,7 @@ class PegawaiController extends Controller
             'gender' => $request->gender,
             'tmp_lahir' => $request->tmp_lahir,
             'tgl_lahir' => $request->tgl_lahir,
+            'kekayaan' => $request->kekayaan,
             'alamat' => $request->alamat,
             'foto' => $fileName,
         ]);
@@ -123,8 +126,10 @@ class PegawaiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        //menambahkan tombol hapus pada pegawai
+        DB::table('pegawai')->where('id', $id)->delete();
+        return redirect('admin/pegawai');
     }
 }

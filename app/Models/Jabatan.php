@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Jabatan extends Model
 {
     use HasFactory;
-    protected $table = 'jabatan';//inipemanggilan nama table
-    protected $primarykey = 'id';//ini contoh pemanggilan id atau primary keynya
-    protected $fillable = ['nama'];//ini pemanggilan kolom pada table
-
+    protected $table = 'jabatan';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'nama'
+    ];
     public function pegawai(){
-        return $this->hasMany(Pegawai::class);//memanggil relasi antara table jabatan dengan table pagawai atau one to many
+        return $this->hasMany(Pegawai::class);//membuat relasi antara jabatan dan pegawai
     }
 }
