@@ -43,7 +43,7 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //sintaks untuk menambahkan foto 
+        //sintaks untuk menambahkan foto
         if(!empty($request->foto)){
             $fileName = 'foto-'.$request->id.'.'.$request->foto->extension();
             $request->foto->move(public_path('admin/image'), $fileName);
@@ -126,7 +126,7 @@ class PegawaiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //menambahkan tombol hapus pada pegawai
         DB::table('pegawai')->where('id', $id)->delete();

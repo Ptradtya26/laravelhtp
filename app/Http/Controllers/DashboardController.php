@@ -14,8 +14,7 @@ class DashboardController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {       
-
+    {
         $pegawai = Pegawai::count();
         $divisi = Divisi::count();
         $jabatan = Jabatan::count();
@@ -25,7 +24,7 @@ class DashboardController extends Controller
         ->groupBy('gender')
         ->get();
 
-         return view('admin.dashboard', compact('pegawai','divisi', 'jabatan', 'ar_kekayaan', 'ar_gender'));
+         return view('admin.dashboard', compact('pegawai','divisi','jabatan','ar_kekayaan','ar_gender'));
     }
 
     /**
