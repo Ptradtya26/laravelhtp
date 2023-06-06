@@ -20,9 +20,9 @@
                                 <!-- <i class="fas fa-table me-1"></i>
                                 DataTable Example -->
                                 <!-- membuat tombol mengarahkan ke file produk_form.php -->
-                               
+
                                 <a href="{{url('admin/jabatan/create')}}" class="btn btn-primary btn-sm"> Tambah</a>
-                                
+
                             </div>
 
                             <div class="card-body">
@@ -53,13 +53,13 @@
                                             <td>{{$j->nama}}</td>
                                             <td>
                                                 <form action="#" method="POST">
-                                                  
+
                                         <a class="btn btn-info btn-sm" href="#">Detail</a>
-                                                
-                                                
-                                        <a class="btn btn-warning btn-sm" href="{{url('admin/jabatan/edit/'.$j->id)}}">Ubah</a>
-                                                    
-                <!-- <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus" 
+
+
+    <a class="btn btn-warning btn-sm" href="{{url('admin/jabatan/edit/'.$j->id)}}">Ubah</a>
+
+                <!-- <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus"
                                     onclick="return confirm('Anda yakin akan dihapus?')">Hapus</button> -->
         <!-- Button trigger modal -->
 <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -85,18 +85,18 @@
   </div>
 </div>
 
-                                                    
 
-                                                    
+
+
                                                 </form>
                                             </td>
                                         </tr>
-                                        @php 
+                                        @php
                                         $no++
 
                                         @endphp
                                         @endforeach
-                                      
+
                                     </tbody>
                                 </table>
                             </div>
@@ -106,4 +106,3 @@
 
 @endsection
 
-               
