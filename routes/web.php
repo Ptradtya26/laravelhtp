@@ -28,12 +28,12 @@ Route::get ('/salam', function(){
     return "Selamat pagi";
 }); // ini adalah routing untuk pemanggilan dirinya sendiri
 Route::get('/ucapan', function(){
-    return view('ucapan'); //ini adalah routing yang mengarahkan ke view yang ada di folder 
+    return view('ucapan'); //ini adalah routing yang mengarahkan ke view yang ada di folder
     //resources/views
 });
 Route::get('/nilai', function(){
     return view('nilai');
-}); //arahkan return nilai ke file nilai yang ada di view 
+}); //arahkan return nilai ke file nilai yang ada di view
 Route::get('/daftar_nilai', function(){
     return view('daftar_nilai');
 });
@@ -52,7 +52,10 @@ Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit']);
 Route::post('/pegawai/update', [PegawaiController::class, 'update']);
 Route::get('/pegawai/show/{id}', [PegawaiController::class, 'show']);
 Route::get('/pegawai/delete/{id}', [PegawaiController::class, 'destroy']);
-
+Route::get('generate-pdf', [PegawaiController::class, 'generatePDF']);
+Route::get('/pegawai/pegawaiPDF', [PegawaiController::class, 'pegawaiPDF']);
+Route::get('pegawai/exportexcel/', [PegawaiController::class, 'exportExcel']);
+Route::post('/pegawai/importexcel', [PegawaiController::class, 'importExcel']);
 
 //ini adalah route untuk divisi
 Route::get('/divisi', [DivisiController::class, 'index']);

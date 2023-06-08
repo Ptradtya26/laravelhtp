@@ -20,12 +20,13 @@
                                 DataTable Example -->
                                 <!-- membuat tombol mengarahkan ke file produk_form.php -->
 
-                                <a href="{{url('admin/divisi/create')}}" class="btn btn-primary btn-sm"> Tambah</a>
+                                <a href="{{url('admin/divisi/create')}}" class="btn btn-outline-primary btn-sm"> Tambah</a>
 
                             </div>
 
+
                             <div class="card-body">
-                                <table id="datatablesSimple">
+                                <table id="example" >
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -53,10 +54,10 @@
                                             <td>
                                                 <form action="#" method="POST">
 
-    <a class="btn btn-info btn-sm" href="{{url('admin/divisi/show/'.$d->id)}}">Detail</a>
+                                        <a class="btn btn-info btn-sm" href="{{url('admin/divisi/show/'.$d->id)}}">Detail</a>
 
 
-     <a class="btn btn-warning btn-sm" href="{{url('admin/divisi/edit/'.$d->id)}}">Ubah</a>
+                                        <a class="btn btn-warning btn-sm" href="{{url('admin/divisi/edit/'.$d->id)}}">Ubah</a>
 
                 <!-- <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus"
                                     onclick="return confirm('Anda yakin akan dihapus?')">Hapus</button> -->
@@ -104,4 +105,5 @@
 </div>
 
 @endsection
+
 

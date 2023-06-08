@@ -1,6 +1,37 @@
 @extends('admin.layout.appadmin')
 
 @section('content')
+<!-- modal -->
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ url('admin/pegawai/importexcel') }}" method="POST" enctype="multipart/form-data">
+      <div class="modal-body">
+        <div class="form-group">
+            {{csrf_field()}}
+            <input type="file" name="file">
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-outline-primary">Save changes</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<!-- Modal -->
+
                         <h1 class="mt-4">Tables</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
@@ -18,10 +49,17 @@
                                 <!-- <i class="fas fa-table me-1"></i>
                                 DataTable Example -->
                                 <!-- membuat tombol mengarahkan ke file produk_form.php -->
-                               
-                                <a href="{{url('admin/pegawai/create')}}" class="btn btn-primary btn-sm"> Tambah</a>
-                                
+
+                                <a href="{{url('admin/pegawai/create')}}" class="btn btn-outline-primary btn-sm"> Tambah</a>
+
                             </div>
+                            <div class="card-header">
+                            <a href="{{url('admin/pegawai/pegawaiPDF')}}" class="btn btn-outline-danger btn-secondary" target="_blank"> Export To PDF</a>
+                            <a href="{{ url('admin/pegawai/exportexcel') }}" class="btn btn-outline-success btn-secondary"> Export To EXCEL</a>
+                            <button type="button" class="btn btn-outline-warning btn-secondary" data-toggle="modal" data-target="#exampleModal">
+                                Import To Excel
+                              </button>
+                        </div>
 
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -78,18 +116,18 @@
                                             <td>
                                                 @empty($p->foto)
                                                 <img src="{{url('admin/image/nophoto.png')}}" width="100%">
-                                                @else 
+                                                @else
                                                 <img src="{{url('admin/image')}}/{{$p->foto}}" width="100%">
                                                 @endempty
                                             </td>
                                             <td>
                                                 <form action="#" method="POST">
-                                                  
+
                                         <a class="btn btn-info btn-sm" href="{{url('admin/pegawai/show/'.$p->id)}}">Detail</a>
-                                                
-                                                
+
+
                                         <a class="btn btn-warning btn-sm" href="{{url('admin/pegawai/edit/'.$p->id)}}">Ubah</a>
-                                        
+
 <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$p->id}}">
   Hapus
 </button>
@@ -112,18 +150,18 @@
     </div>
   </div>
 </div>
-                                        
 
-                                                    
+
+
                                                 </form>
                                             </td>
                                         </tr>
-                                        @php 
+                                        @php
                                         $no++
 
                                         @endphp
                                         @endforeach
-                                      
+
                                     </tbody>
                                 </table>
                             </div>
@@ -132,4 +170,3 @@
 </div>
 @endsection
 
-               
