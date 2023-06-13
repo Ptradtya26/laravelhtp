@@ -31,6 +31,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama</th>
+                                            <th>Akses</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -38,6 +39,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama</th>
+                                            <th>Akses</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
@@ -51,13 +53,14 @@
                                         <tr>
                                             <td>{{$no}}</td>
                                             <td>{{$u->name}}</td>
+                                            <td>{{$u->role}}</td>
                                             <td>
                                                 <form action="#" method="POST">
 
                                         <a class="btn btn-info btn-sm" href="#">Detail</a>
 
 
-    <a class="btn btn-warning btn-sm" href="#">Ubah</a>
+                                        <a class="btn btn-warning btn-sm" href="#">Ubah</a>
 
                 <!-- <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus"
                                     onclick="return confirm('Anda yakin akan dihapus?')">Hapus</button> -->
@@ -84,22 +87,18 @@
     </div>
   </div>
 </div>
+</form>
+   </td>
+   </tr>
+   @php
+  $no++
 
+   @endphp
+   @endforeach
 
-
-
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @php
-                                        $no++
-
-                                        @endphp
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
-                            </div>
+    </tbody>
+     </table>
+      </div>
 
 </div>
 </div>

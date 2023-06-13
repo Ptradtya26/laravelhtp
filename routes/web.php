@@ -42,9 +42,9 @@ Route::get('/daftar_nilai', function(){
 Route::get('/siswa', [SiswaController::class, 'dataSiswa']);
 //mengarahkan ke controller dashboardController
 //prefix atau group
-Route::group(['middleware' => ['auth']], function(){
-Route::prefix('admin')->name('admin.')->group(function(){
 
+Route::group(['middleware' => ['auth', 'peran:admin-manajer-staff']], function(){
+    Route::prefix('admin')->name('admin.')->group(function(){
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
 Route::get('/staff', [StaffController::class, 'index']);
@@ -58,8 +58,9 @@ Route::get('/pegawai/show/{id}', [PegawaiController::class, 'show']);
 Route::get('/pegawai/delete/{id}', [PegawaiController::class, 'destroy']);
 Route::get('generate-pdf', [PegawaiController::class, 'generatePDF']);
 Route::get('/pegawai/pegawaiPDF', [PegawaiController::class, 'pegawaiPDF']);
-Route::get('pegawai/exportexcel/', [PegawaiController::class, 'exportExcel']);
+Route::get('/pegawai/exportexcel/', [PegawaiController::class, 'exportExcel']);
 Route::post('/pegawai/importexcel', [PegawaiController::class, 'importExcel']);
+
 
 //ini adalah route untuk divisi
 Route::get('/divisi', [DivisiController::class, 'index']);
@@ -80,7 +81,7 @@ Route::post('/jabatan/update', [JabatanController::class, 'update']);
 
 
 //ini adalah routing untuk dashboard
-//ini adalah raouting untuk user
+//ini adalah route untuk user
 Route::get('/user', [UserController::class, 'index']);
 
 });
@@ -88,5 +89,10 @@ Route::get('/user', [UserController::class, 'index']);
 //nantinya pegawai tersebut mengambil pelatihan dan pada table pelatihan bertambah
 
 Auth::routes();
-
+Route::get('/after_register', function(){
+    return view ('after_register');
+});
+// Route::get('/acces_denied2', function(){
+//     return view ('admin/accesdenied');
+// });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

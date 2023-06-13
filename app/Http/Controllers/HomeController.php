@@ -7,6 +7,7 @@ use App\Models\Pegawai;
 use App\Models\Divisi;
 use App\Models\Jabatan;
 use DB;
+
 class HomeController extends Controller
 {
     /**
@@ -26,6 +27,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect('admin/dashboard');
+        //membuat controller baru
+        // $pegawai = Pegawai::count();
+        // $divisi = Divisi::count();
+        // $jabatan = Jabatan::count();
+        // $ar_kekayaan = DB::table('pegawai')->select('nama', 'kekayaan')->get();
+        // $ar_gender = DB::table('pegawai')
+        // ->selectRaw('gender, count(gender) as jumlah')
+        // ->groupBy('gender')
+        // ->get();
+        // return view('admin.dashboard', compact('pegawai', 'divisi', 'jabatan', 'ar_kekayaan','ar_gender'));
+        //hanya redirect
+        // return redirect('admin/dashboard');
+        // return redirect('home');
+        //ini adalah redirect ketika dia dibolehkan masuk ke halaman admin
+        if(auth()->user()->role == 'admin' || auth()->user()->role == 'manajer' || auth()->user()->role == 'staff'){
+            return redirect('admin/dashboard');
+        } else {
+            return redirect('/after_register');
+        }
     }
 }
